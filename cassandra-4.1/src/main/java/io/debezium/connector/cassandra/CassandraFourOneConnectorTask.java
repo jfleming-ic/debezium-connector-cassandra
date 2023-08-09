@@ -5,7 +5,7 @@
  */
 package io.debezium.connector.cassandra;
 
-public class Cassandra4ConnectorTask extends AbstractConnectorTask {
+public class CassandraFourOneConnectorTask extends AbstractConnectorTask {
 
     @Override
     protected CassandraConnectorTaskTemplate init(CassandraConnectorConfig config, ComponentFactory factory) {

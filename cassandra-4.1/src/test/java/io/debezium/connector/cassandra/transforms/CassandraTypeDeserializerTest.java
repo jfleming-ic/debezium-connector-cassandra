@@ -64,7 +64,7 @@ import com.datastax.oss.driver.api.core.CqlIdentifier;
 import com.datastax.oss.driver.api.core.type.DataTypes;
 import com.datastax.oss.driver.internal.core.type.DefaultUserDefinedType;
 
-import io.debezium.connector.cassandra.Cassandra4TypeProvider;
+import io.debezium.connector.cassandra.CassandraFourOneTypeProvider;
 import io.debezium.connector.cassandra.transforms.CassandraTypeDeserializer.DecimalMode;
 import io.debezium.connector.cassandra.transforms.CassandraTypeDeserializer.VarIntMode;
 
@@ -74,7 +74,7 @@ public class CassandraTypeDeserializerTest {
 
     @BeforeClass
     public static void beforeAll() {
-        Cassandra4TypeProvider provider = new Cassandra4TypeProvider();
+        CassandraFourOneTypeProvider provider = new CassandraFourOneTypeProvider();
         CassandraTypeDeserializer.init(provider.deserializers(), DecimalMode.DOUBLE, VarIntMode.LONG,
                 provider.baseTypeForReversedType());
     }

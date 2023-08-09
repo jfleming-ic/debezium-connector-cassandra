@@ -12,15 +12,15 @@ import org.apache.cassandra.db.commitlog.CommitLogPosition;
 import org.apache.cassandra.db.commitlog.CommitLogReadHandler;
 import org.apache.cassandra.db.commitlog.CommitLogReader;
 
-public class Cassandra4CommitLogSegmentReader implements CommitLogSegmentReader {
+public class CassandraFourOneCommitLogSegmentReader implements CommitLogSegmentReader {
 
     private final CommitLogReader commitLogReader;
 
     private final CommitLogReadHandler commitLogReadHandler;
 
-    public Cassandra4CommitLogSegmentReader(CassandraConnectorContext context, CommitLogProcessorMetrics metrics) {
+    public CassandraFourOneCommitLogSegmentReader(CassandraConnectorContext context, CommitLogProcessorMetrics metrics) {
         this.commitLogReader = new CommitLogReader();
-        this.commitLogReadHandler = new Cassandra4CommitLogReadHandlerImpl(context, metrics);
+        this.commitLogReadHandler = new CassandraFourOneCommitLogReadHandlerImpl(context, metrics);
     }
 
     @Override

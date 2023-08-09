@@ -13,7 +13,7 @@ public class QueueProcessorTest extends AbstractQueueProcessorTest {
     public CassandraConnectorContext generateTaskContext(Configuration configuration) {
 
         CassandraConnectorConfig config = new CassandraConnectorConfig(configuration);
-        Cassandra4TypeProvider provider = new Cassandra4TypeProvider();
+        CassandraFourOneTypeProvider provider = new CassandraFourOneTypeProvider();
         CassandraTypeDeserializer.init(provider.deserializers(), config.getDecimalMode(), config.getVarIntMode(),
                 provider.baseTypeForReversedType());
 

@@ -23,13 +23,13 @@ import com.datastax.oss.driver.api.core.session.Session;
 
 import io.debezium.connector.SourceInfoStructMaker;
 
-public class Cassandra4SchemaChangeListener extends AbstractSchemaChangeListener {
+public class CassandraFourOneSchemaChangeListener extends AbstractSchemaChangeListener {
 
-    private static final Logger LOGGER = LoggerFactory.getLogger(Cassandra4SchemaChangeListener.class);
+    private static final Logger LOGGER = LoggerFactory.getLogger(CassandraFourOneSchemaChangeListener.class);
 
-    public Cassandra4SchemaChangeListener(String kafkaTopicPrefix,
-                                          SourceInfoStructMaker<SourceInfo> sourceInfoStructMaker,
-                                          SchemaHolder schemaHolder) {
+    public CassandraFourOneSchemaChangeListener(String kafkaTopicPrefix,
+                                                SourceInfoStructMaker<SourceInfo> sourceInfoStructMaker,
+                                                SchemaHolder schemaHolder) {
         super(kafkaTopicPrefix, sourceInfoStructMaker, schemaHolder);
     }
 

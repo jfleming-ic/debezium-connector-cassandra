@@ -5,8 +5,8 @@
  */
 package io.debezium.connector.cassandra;
 
-import static io.debezium.connector.cassandra.Cassandra4CommitLogReadHandlerImpl.PartitionType.PARTITION_AND_CLUSTERING_KEY_ROW_DELETION;
-import static io.debezium.connector.cassandra.Cassandra4CommitLogReadHandlerImpl.PartitionType.PARTITION_KEY_ROW_DELETION;
+import static io.debezium.connector.cassandra.CassandraFourOneCommitLogReadHandlerImpl.PartitionType.PARTITION_AND_CLUSTERING_KEY_ROW_DELETION;
+import static io.debezium.connector.cassandra.CassandraFourOneCommitLogReadHandlerImpl.PartitionType.PARTITION_KEY_ROW_DELETION;
 import static io.debezium.connector.cassandra.CassandraSchemaFactory.CellData.ColumnType.CLUSTERING;
 import static io.debezium.connector.cassandra.CassandraSchemaFactory.CellData.ColumnType.PARTITION;
 import static io.debezium.connector.cassandra.CassandraSchemaFactory.CellData.ColumnType.REGULAR;
@@ -67,8 +67,8 @@ import io.debezium.time.Conversions;
  * for each {@link PartitionUpdate} in the {@link Mutation} (a mutation could have multiple partitions if it is a batch update),
  * which in turn makes one or more record via the {@link RecordMaker} and enqueue the record into the {@link ChangeEventQueue}.
  */
-public class Cassandra4CommitLogReadHandlerImpl implements CommitLogReadHandler {
-    private static final Logger LOGGER = LoggerFactory.getLogger(Cassandra4CommitLogReadHandlerImpl.class);
+public class CassandraFourOneCommitLogReadHandlerImpl implements CommitLogReadHandler {
+    private static final Logger LOGGER = LoggerFactory.getLogger(CassandraFourOneCommitLogReadHandlerImpl.class);
 
     private static final boolean MARK_OFFSET = true;
 
@@ -80,7 +80,7 @@ public class Cassandra4CommitLogReadHandlerImpl implements CommitLogReadHandler 
     private final RangeTombstoneContext<org.apache.cassandra.schema.TableMetadata> rangeTombstoneContext = new RangeTombstoneContext<>();
     private final CassandraSchemaFactory schemaFactory;
 
-    Cassandra4CommitLogReadHandlerImpl(CassandraConnectorContext context, CommitLogProcessorMetrics metrics) {
+    CassandraFourOneCommitLogReadHandlerImpl(CassandraConnectorContext context, CommitLogProcessorMetrics metrics) {
         this.queues = context.getQueues();
         this.recordMaker = new RecordMaker(context.getCassandraConnectorConfig().tombstonesOnDelete(),
                 new Filters(context.getCassandraConnectorConfig().fieldExcludeList()),

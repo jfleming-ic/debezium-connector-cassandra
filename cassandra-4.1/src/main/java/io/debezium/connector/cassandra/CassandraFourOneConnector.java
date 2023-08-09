@@ -7,11 +7,11 @@ package io.debezium.connector.cassandra;
 
 import org.apache.kafka.connect.connector.Task;
 
-public class Cassandra4Connector extends AbstractSourceConnector {
+public class CassandraFourOneConnector extends AbstractSourceConnector {
 
     @Override
     public Class<? extends Task> taskClass() {
-        return Cassandra4ConnectorTask.class;
+        return CassandraFourOneConnectorTask.class;
     }
 
 }

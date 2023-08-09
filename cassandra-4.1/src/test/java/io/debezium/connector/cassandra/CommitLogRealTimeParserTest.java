@@ -38,7 +38,7 @@ public class CommitLogRealTimeParserTest extends AbstractCommitLogProcessorTest 
     public void setUp() throws Exception {
         super.setUp();
         commitLogProcessor = new CommitLogIdxProcessor(context, metrics,
-                new Cassandra4CommitLogSegmentReader(context, metrics),
+                new CassandraFourOneCommitLogSegmentReader(context, metrics),
                 new File(DatabaseDescriptor.getCDCLogLocation()));
         readLogs();
     }

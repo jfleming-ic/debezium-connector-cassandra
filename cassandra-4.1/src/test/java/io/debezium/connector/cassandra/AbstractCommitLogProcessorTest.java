@@ -42,7 +42,7 @@ public abstract class AbstractCommitLogProcessorTest extends EmbeddedCassandra4C
         context = generateTaskContext();
         await().atMost(Duration.ofSeconds(60)).until(() -> context.getSchemaHolder()
                 .getKeyValueSchema(new KeyspaceTable(TEST_KEYSPACE_NAME, TEST_TABLE_NAME)) != null);
-        commitLogReadHandler = new Cassandra4CommitLogReadHandlerImpl(context, metrics);
+        commitLogReadHandler = new CassandraFourOneCommitLogReadHandlerImpl(context, metrics);
         metrics.registerMetrics();
     }
 

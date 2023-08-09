@@ -16,7 +16,7 @@ public abstract class EmbeddedCassandra4ConnectorTestBase extends CassandraConne
     protected CassandraConnectorContext generateTaskContext(Configuration configuration) throws Exception {
 
         CassandraConnectorConfig config = new CassandraConnectorConfig(configuration);
-        Cassandra4TypeProvider provider = new Cassandra4TypeProvider();
+        CassandraFourOneTypeProvider provider = new CassandraFourOneTypeProvider();
         CassandraTypeDeserializer.init(provider.deserializers(), config.getDecimalMode(), config.getVarIntMode(),
                 provider.baseTypeForReversedType());
 

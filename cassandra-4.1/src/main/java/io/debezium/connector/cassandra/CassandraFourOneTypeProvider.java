@@ -63,7 +63,7 @@ import io.debezium.connector.cassandra.transforms.type.deserializer.TimestampTyp
 import io.debezium.connector.cassandra.transforms.type.deserializer.UUIDTypeDeserializer;
 import io.debezium.connector.cassandra.transforms.type.deserializer.VarIntTypeDeserializer;
 
-public class Cassandra4TypeProvider implements CassandraTypeProvider {
+public class CassandraFourOneTypeProvider implements CassandraTypeProvider {
 
     @Override
     public List<AbstractTypeDeserializer> deserializers() {

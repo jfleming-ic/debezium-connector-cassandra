@@ -32,7 +32,7 @@ public class CassandraConnectorTask {
     public static class Cassandra4SchemaChangeListenerProvider implements SchemaChangeListenerProvider {
         @Override
         public AbstractSchemaChangeListener provide(CassandraConnectorConfig config) {
-            return new Cassandra4SchemaChangeListener(config.getLogicalName(),
+            return new CassandraFourOneSchemaChangeListener(config.getLogicalName(),
                     config.getSourceInfoStructMaker(),
                     new SchemaHolder());
         }
@@ -45,11 +45,11 @@ public class CassandraConnectorTask {
     static CassandraConnectorTaskTemplate init(CassandraConnectorConfig config, ComponentFactory factory) {
         CommitLogProcessorMetrics metrics = new CommitLogProcessorMetrics();
         return new CassandraConnectorTaskTemplate(config,
-                new Cassandra4TypeProvider(),
+                new CassandraFourOneTypeProvider(),
                 new Cassandra4SchemaLoader(),
                 new Cassandra4SchemaChangeListenerProvider(),
                 context -> new AbstractProcessor[]{ new CommitLogIdxProcessor(context, metrics,
-                        new Cassandra4CommitLogSegmentReader(context, metrics),
+                        new CassandraFourOneCommitLogSegmentReader(context, metrics),
                         new File(DatabaseDescriptor.getCDCLogLocation())) },
                 factory);
     }
