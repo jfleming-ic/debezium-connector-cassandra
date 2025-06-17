@@ -52,7 +52,7 @@ public class QueueProcessor extends AbstractProcessor {
                 processEvent(event);
             }
             catch (Exception ex) {
-                LOGGER.error("Processing of event {} was errorneous: {}", event, ex.toString());
+                LOGGER.error("Processing of event {} was erroneous.", event, ex);
             }
         }
     }
