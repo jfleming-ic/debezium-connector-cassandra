@@ -6,6 +6,7 @@
 package io.debezium.connector.cassandra.utils;
 
 import static com.google.common.collect.ImmutableMap.of;
+import static io.confluent.kafka.serializers.AbstractKafkaSchemaSerDeConfig.AUTO_REGISTER_SCHEMAS;
 
 import java.io.File;
 import java.io.IOException;
@@ -17,6 +18,7 @@ import java.util.Properties;
 import java.util.UUID;
 import java.util.stream.Collectors;
 
+import io.confluent.kafka.serializers.AbstractKafkaAvroSerDeConfig;
 import org.apache.kafka.clients.producer.ProducerConfig;
 
 import com.datastax.oss.driver.api.core.CqlSession;
@@ -75,6 +77,16 @@ public class TestUtils {
                 // put(CassandraConnectorConfig.MAX_QUEUE_SIZE_IN_BYTES.name(), 1_000_000_000);
             }
         };
+    }
+
+    public static Properties generateDefaultConfigMapWithAvro() throws IOException {
+        Properties props = generateDefaultConfigMap();
+        props.put(CassandraConnectorConfig.KEY_CONVERTER_CLASS_CONFIG.name(), "org.apache.kafka.connect.json.JsonConverter");
+        props.put(CassandraConnectorConfig.VALUE_CONVERTER_CLASS_CONFIG.name(), "io.confluent.connect.avro.AvroConverter");
+        props.put(CassandraConnectorConfig.VALUE_CONVERTER_PREFIX + AUTO_REGISTER_SCHEMAS, "false");
+        props.put(CassandraConnectorConfig.VALUE_CONVERTER_PREFIX + AbstractKafkaAvroSerDeConfig.SCHEMA_REGISTRY_URL_CONFIG, "mock://my-scope-name");
+        props.put(CassandraConnectorConfig.KEY_CONVERTER_PREFIX + AbstractKafkaAvroSerDeConfig.SCHEMA_REGISTRY_URL_CONFIG, "mock://my-scope-name");
+        return props;
     }
 
     public static void createTestKeyspace() throws Exception {
