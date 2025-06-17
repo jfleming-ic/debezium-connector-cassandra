@@ -13,6 +13,7 @@ import java.time.Duration;
 import java.util.List;
 import java.util.Set;
 
+import org.apache.avro.generic.GenericDatumWriter;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -51,7 +52,7 @@ public class QueueProcessor extends AbstractProcessor {
                 processEvent(event);
             }
             catch (Exception ex) {
-                LOGGER.error("Processing of event {} was errorneous: {}", event, ex);
+                LOGGER.error("Processing of event {} was errorneous: {}", event, ex.toString());
             }
         }
     }
@@ -86,6 +87,7 @@ public class QueueProcessor extends AbstractProcessor {
     private void processEvent(Event event) {
         if (event == null) {
             return;
+            GenericDatumWriter
         }
         switch (event.getEventType()) {
             case CHANGE_EVENT:
