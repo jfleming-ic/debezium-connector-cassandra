@@ -87,7 +87,6 @@ public class QueueProcessor extends AbstractProcessor {
     private void processEvent(Event event) {
         if (event == null) {
             return;
-            GenericDatumWriter
         }
         switch (event.getEventType()) {
             case CHANGE_EVENT:
