@@ -13,7 +13,6 @@ import java.time.Duration;
 import java.util.List;
 import java.util.Set;
 
-import org.apache.avro.generic.GenericDatumWriter;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 

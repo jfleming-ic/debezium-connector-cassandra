@@ -18,7 +18,6 @@ import java.util.Properties;
 import java.util.UUID;
 import java.util.stream.Collectors;
 
-import io.confluent.kafka.serializers.AbstractKafkaAvroSerDeConfig;
 import org.apache.kafka.clients.producer.ProducerConfig;
 
 import com.datastax.oss.driver.api.core.CqlSession;
@@ -26,6 +25,7 @@ import com.datastax.oss.driver.api.core.cql.SimpleStatement;
 import com.datastax.oss.driver.api.core.cql.Statement;
 import com.datastax.oss.driver.api.querybuilder.SchemaBuilder;
 
+import io.confluent.kafka.serializers.AbstractKafkaAvroSerDeConfig;
 import io.debezium.connector.cassandra.CassandraConnectorConfig;
 import io.debezium.connector.cassandra.CassandraConnectorContext;
 

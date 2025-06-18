@@ -5,8 +5,8 @@
  */
 package io.debezium.connector.cassandra;
 
-import static com.datastax.oss.driver.api.core.type.DataTypes.*;
-
+import static com.datastax.oss.driver.api.core.type.DataTypes.INT;
+import static com.datastax.oss.driver.api.core.type.DataTypes.TEXT;
 import static io.debezium.connector.cassandra.CassandraSchemaFactory.CellData.ColumnType.CLUSTERING;
 import static io.debezium.connector.cassandra.CassandraSchemaFactory.CellData.ColumnType.PARTITION;
 import static io.debezium.connector.cassandra.CassandraSchemaFactory.CellData.ColumnType.REGULAR;
@@ -19,7 +19,9 @@ import static java.util.Arrays.asList;
 import static org.junit.Assert.assertEquals;
 
 import java.io.File;
-import java.util.*;
+import java.util.Arrays;
+import java.util.HashMap;
+import java.util.Map;
 
 import org.apache.commons.lang3.tuple.Pair;
 import org.junit.After;
@@ -70,7 +72,7 @@ public class QueueProcessorTest {
                 .withTable("cdc_table")
                 .withKafkaTopicPrefix(context.getCassandraConnectorConfig().getLogicalName())
                 .withSourceInfoStructMarker(context.getCassandraConnectorConfig().getSourceInfoStructMaker())
-                .withRowSchema(rowSchema(asList("col1", "col2", "col3"), asList(TEXT, INT, DataTypes.setOf(DataTypes.TEXT))))
+                .withRowSchema(rowSchema(asList("col1", "col2", "col3"), asList(TEXT, INT, DataTypes.setOf(TEXT))))
                 .withPrimaryKeyNames(asList("p1", "c1"))
                 .withPrimaryKeySchemas(getPrimaryKeySchemas(asList(INT, INT)))
                 .build();
@@ -83,7 +85,6 @@ public class QueueProcessorTest {
         rowData.addCell(schemaFactory.cellData("col1", "col1value", null, REGULAR));
         rowData.addCell(schemaFactory.cellData("col2", 3, null, REGULAR));
         rowData.addCell(schemaFactory.cellData("col3", Arrays.asList("A", "B"), null, REGULAR));
-
 
         sourceInfo = new SourceInfo(context.getCassandraConnectorConfig(), "cluster1",
                 new OffsetPosition("CommitLog-6-123.log", 0),

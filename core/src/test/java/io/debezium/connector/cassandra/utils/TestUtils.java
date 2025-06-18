@@ -12,14 +12,10 @@ import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.Properties;
 
-import static io.confluent.kafka.serializers.AbstractKafkaSchemaSerDeConfig.AUTO_REGISTER_SCHEMAS;
-
 import org.apache.kafka.clients.producer.ProducerConfig;
 
 import io.debezium.connector.cassandra.CassandraConnectorConfig;
 import io.debezium.connector.cassandra.CommitLogUtil;
-import io.confluent.kafka.serializers.AbstractKafkaAvroSerDeConfig;
-
 
 public class TestUtils {
     public static final String TEST_CONNECTOR_NAME = "cassandra-01";
